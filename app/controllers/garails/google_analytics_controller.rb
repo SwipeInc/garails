@@ -3,7 +3,7 @@ require 'digest'
 
 class Garails::GoogleAnalyticsController < ApplicationController
   unloadable
-  before_filter :extract_visitor_id
+  before_action :extract_visitor_id
 
   UTM_HEADERS = {
     "Content-Type" => "image/gif",
