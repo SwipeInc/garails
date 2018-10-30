@@ -16,6 +16,11 @@ class Garails::GoogleAnalyticsController < ApplicationController
     0x01, 0x00, 0x01, 0x00, 0x00, 0x02, 0x02, 0x44, 0x01, 0x00, 0x3b ].map{|i| i.chr }.join
   UTM_COOKIE_NAME = "__utmmobile"
 
+  # override set expires
+  def set_expires
+    expires_in 0, {:public => true}
+  end
+  
   def utm
     if Garails.ga_setup?
       g = Garails.mobile_gabba(request, :utmn => params[:utmn])
